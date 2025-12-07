@@ -1,0 +1,6 @@
+prometheus-api-client
+pandas
+prophet
+kubernetes
+matplotlib
+plotly

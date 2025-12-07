@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fake-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fake-app
+  template:
+    metadata:
+      labels:
+        app: fake-app
+    spec:
+      containers:
+      - name: fake-app
+        image: fake-app:v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "200m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fake-service
+spec:
+  selector:
+    app: fake-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: ClusterIP
