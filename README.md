@@ -37,11 +37,11 @@ En utilisant le Machine Learning (Facebook Prophet) pour analyser les modèles d
 ```mermaid
 graph TD
     User[Utilisateurs / Générateur de Trafic] -->|Requêtes HTTP| LB[Service K8s]
-    LB --> Pods[Pods Applicatifs (Flask API)]
+    LB --> Pods[Pods Applicatifs Flask API]
     
     subgraph "Couche d'Observabilité"
         Pods -->|Expose Métriques| Prom[Prometheus]
-        Prom -->|Scraping toutes les 15s| AI[🧠 Autoscaler IA (Python)]
+        Prom -->|Scraping toutes les 15s| AI[Autoscaler IA Python]
     end
     
     subgraph "Moteur de Décision"
